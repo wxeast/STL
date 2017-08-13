@@ -187,11 +187,11 @@ public:
 						start_free = (char  * )free_list[i];
 						end_free = start_free + (i +1)*__ALIGN; 
 						return chunk_alloc(size,nobjs);
-					}
-					end_free = 0;
-					__TRACE_DEBUG("系统堆和自由链表都已无内存，一级配置器做最后一根稻草\n");
-					start_free = (char*)__MallocAllocTemplate<0>::allocate(bytes_to_get);
+					}	
 				}
+				end_free = 0;
+				__TRACE_DEBUG("系统堆和自由链表都已无内存，一级配置器做最后一根稻草\n");
+				start_free = (char*)__MallocAllocTemplate<0>::allocate(bytes_to_get);
 			}
 			heap_size += bytes_to_get;
 			end_free = start_free + bytes_to_get;
